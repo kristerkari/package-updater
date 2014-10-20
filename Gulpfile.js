@@ -22,7 +22,7 @@ gulp.task('test', function(cb) {
                 reporter: 'dot'
             }))
             .pipe(istanbul.writeReports({
-                dir: './dist/coverage',
+                dir: './coverage',
                 reporters: ['text', 'lcov']
             }))
             .on('end', cb);

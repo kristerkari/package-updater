@@ -32,6 +32,7 @@
     "package-updater": "./bin/package-updater"
   },
   "scripts": {
+    "coveralls": "cat ./coverage/lcov.info | COVERALLS_SERVICE_NAME=\"travis-ci\" ./node_modules/.bin/coveralls",
     "test": "./node_modules/.bin/gulp test"
   },
   "repository": {
@@ -41,6 +42,7 @@
   "homepage": "https://github.com/kristerkari/package-updater",
   "devDependencies": {
     "chai": "^1.9.2",
+    "coveralls": "^2.11.2",
     "gulp": "^3.8.8",
     "gulp-istanbul": "^0.3.1",
     "gulp-jscs": "^1.2.0",
