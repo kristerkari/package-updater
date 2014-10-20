@@ -1,0 +1,28 @@
+{
+    "globals": {
+        "console": false,
+        "require": false,
+        "describe": false,
+        "it": false,
+        "expect": true,
+        "beforeEach": false
+    },
+    "node": true,
+    "browser": true,
+    "esnext": true,
+    "bitwise": true,
+    "camelcase": true,
+    "curly": true,
+    "eqeqeq": true,
+    "eqnull": true,
+    "immed": true,
+    "latedef": true,
+    "newcap": true,
+    "noarg": true,
+    "regexp": true,
+    "undef": true,
+    "strict": false,
+    "trailing": true,
+    "smarttabs": true,
+    "white": false
+}

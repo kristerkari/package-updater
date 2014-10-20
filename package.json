@@ -1,0 +1,45 @@
+{
+  "name": "package-updater",
+  "version": "0.0.1",
+  "author": "Krister Kari <krister.kari@webtehdas.fi>",
+  "description": "Find updates and update your npm packages",
+  "keywords": [
+    "npm",
+    "check",
+    "find",
+    "discover",
+    "updates",
+    "upgrades",
+    "dependencies",
+    "package.json",
+    "updater",
+    "version",
+    "management"
+  ],
+  "dependencies": {
+    "npm": "2.1.x",
+    "commander": "2.4.x",
+    "async": "0.9.x",
+    "read-package-json": "1.2.x",
+    "semver": "4.1.x"
+  },
+  "main": "./lib/cli",
+  "bin": {
+    "package-updater": "./bin/package-updater"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kristerkari/package-updater.git"
+  },
+  "homepage": "https://github.com/kristerkari/package-updater",
+  "devDependencies": {
+    "chai": "^1.9.2",
+    "gulp": "^3.8.8",
+    "gulp-istanbul": "^0.3.1",
+    "gulp-jscs": "^1.2.0",
+    "gulp-jshint": "^1.8.5",
+    "gulp-mocha": "^1.1.1",
+    "jscs": "^1.7.3",
+    "jscs-jsdoc": "^0.0.13"
+  }
+}
