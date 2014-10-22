@@ -62,6 +62,36 @@ describe('Version manager', function() {
 
     });
 
+    describe('upgradeDependencies method', function() {
+
+        it('should be a function', function() {
+            expect(typeof versionManager.upgradeDependencies).to.equal('function');
+        });
+
+        it('should upgrade only updated dependencies to new ones', function() {
+
+            expect(versionManager.upgradeDependencies(                 {
+                    csso: '~1.3.7',
+                    'grunt-lib-contrib': '~0.6.1',
+                    'grunt-contrib-clean': '~0.4.0',
+                    'grunt-contrib-nodeunit': '~0.1.2',
+                    grunt: '~0.4.1'
+                }, {
+                    csso: '1.3.11',
+                    'grunt-lib-contrib': '0.7.1',
+                    'grunt-contrib-clean': '0.6.0',
+                    'grunt-contrib-nodeunit': '0.4.1',
+                    grunt: '0.4.1'
+            })).to.deep.equal({
+                csso: '~1.3.11',
+                'grunt-lib-contrib': '~0.7.1',
+                'grunt-contrib-clean': '~0.6.0',
+                'grunt-contrib-nodeunit': '~0.4.1'
+            });
+        });
+
+    });
+
     describe('updatePackageData method', function() {
 
         it('should be a function', function() {
