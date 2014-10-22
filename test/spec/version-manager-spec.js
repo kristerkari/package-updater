@@ -1,6 +1,12 @@
-var expect = require('chai').expect;
-var versionManager = require('../../lib/version-manager.js');
 var path = require('path');
+var async = require('async');
+var chai = require('chai');
+var sinon = require('sinon');
+var sinonChai = require('sinon-chai');
+chai.use(sinonChai);
+var expect = chai.expect;
+var versionManager = require('../../lib/version-manager.js');
+var npmManager = require('../../lib/npm-manager.js');
 
 describe('Version manager', function() {
 
@@ -58,6 +64,10 @@ describe('Version manager', function() {
 
         it('should not update versiom if 1.2.* is used', function() {
             expect(versionManager.upgradeDependencyDeclaration('1.2.*', '1.2.3')).to.equal('1.2.*');
+        });
+
+        it('should not update version if it is bigger than the latest', function() {
+            expect(versionManager.upgradeDependencyDeclaration('2.5.7', '2.4.6')).to.equal('2.4.6');
         });
 
     });
@@ -182,6 +192,78 @@ describe('Version manager', function() {
                 expect(result).not.to.have.property('dep13');
             });
 
+        });
+
+    });
+
+    describe('getLatestVersions method', function() {
+        var getLatestPackageVersionStub;
+        var asyncMapSpy;
+        var callbackSpy;
+
+        beforeEach(function() {
+            asyncMapSpy = sinon.spy(async, 'map');
+            getLatestPackageVersionStub = sinon.stub(npmManager, 'getLatestPackageVersion', function(packageName, callback) {
+                callback(undefined, [{
+                    csso: '1.3.11'
+                },
+                {
+                    'grunt-lib-contrib': '0.7.1'
+                },
+                {
+                    'grunt-contrib-clean': '0.6.0'
+                },
+                {
+                    'grunt-contrib-nodeunit': '0.4.1'
+                },
+                {
+                    grunt: '0.4.5'
+                }]);
+            });
+            callbackSpy = sinon.spy();
+            versionManager.getLatestVersions(
+                ['csso',
+                'grunt-lib-contrib',
+                'grunt-contrib-clean',
+                'grunt-contrib-nodeunit',
+                'grunt'], callbackSpy);
+        });
+
+        afterEach(function() {
+            asyncMapSpy.restore();
+            getLatestPackageVersionStub.restore();
+        });
+
+        it('should be a function', function() {
+            expect(typeof versionManager.getLatestVersions).to.equal('function');
+        });
+
+        it('should have called async.map once', function() {
+            expect(asyncMapSpy).to.have.callCount(1);
+        });
+
+        it('should have called npmManager.getLatestPackageVersion 5 times (once for each package)', function() {
+            expect(getLatestPackageVersionStub).to.have.callCount(5);
+        });
+
+        it('should have called the callback with new versions', function() {
+            expect(callbackSpy).to.have.been.calledWithExactly(undefined, {
+                '0': {
+                    csso: '1.3.11'
+                },
+                '1': {
+                    'grunt-lib-contrib': '0.7.1'
+                },
+                '2': {
+                    'grunt-contrib-clean': '0.6.0'
+                },
+                '3': {
+                    'grunt-contrib-nodeunit': '0.4.1'
+                },
+                '4': {
+                    grunt: '0.4.5'
+                }
+            });
         });
 
     });

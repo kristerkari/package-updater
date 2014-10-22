@@ -5,7 +5,8 @@
         "describe": false,
         "it": false,
         "expect": true,
-        "beforeEach": false
+        "beforeEach": false,
+        "afterEach": false
     },
     "node": true,
     "browser": true,
