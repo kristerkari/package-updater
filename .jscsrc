@@ -11,8 +11,7 @@
         "checkTypes": true,
         "checkRedundantReturns": true,
         "checkRedundantAccess": true,
-        "leadingUnderscoreAccess": "private",
-        "enforceExistence": true
+        "leadingUnderscoreAccess": "private"
     },
     "requireCurlyBraces": ["if", "else", "for", "while", "do", "try", "catch"],
     "requireSpaceAfterKeywords": ["if", "else", "for", "while", "do", "switch", "return", "try"],
