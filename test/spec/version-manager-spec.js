@@ -60,6 +60,10 @@ describe('Version manager', function() {
             expect(versionManager.upgradeDependencyDeclaration('1.2.*', '1.2.3')).to.equal('1.2.*');
         });
 
+        it('should not update version if it is bigger than the latest', function() {
+            expect(versionManager.upgradeDependencyDeclaration('2.5.7', '2.4.6')).to.equal('2.4.6');
+        });
+
     });
 
     describe('upgradeDependencies method', function() {
