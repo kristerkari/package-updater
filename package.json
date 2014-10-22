@@ -49,6 +49,8 @@
     "gulp-jshint": "^1.8.5",
     "gulp-mocha": "^1.1.1",
     "jscs": "^1.7.3",
-    "jscs-jsdoc": "^0.0.13"
+    "jscs-jsdoc": "^0.0.13",
+    "sinon": "^1.10.3",
+    "sinon-chai": "^2.6.0"
   }
 }
