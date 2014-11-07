@@ -22,7 +22,7 @@
   ],
   "dependencies": {
     "npm": "2.1.x",
-    "commander": "2.4.x",
+    "commander": "2.5.x",
     "async": "0.9.x",
     "read-package-json": "1.2.x",
     "semver": "4.1.x"
@@ -43,13 +43,13 @@
   "devDependencies": {
     "chai": "^1.9.2",
     "coveralls": "^2.11.2",
-    "gulp": "^3.8.9",
+    "gulp": "^3.8.10",
     "gulp-istanbul": "^0.3.1",
-    "gulp-jscs": "^1.2.1",
-    "gulp-jshint": "^1.8.5",
+    "gulp-jscs": "^1.3.0",
+    "gulp-jshint": "^1.9.0",
     "gulp-mocha": "^1.1.1",
     "jscs": "^1.7.3",
-    "jscs-jsdoc": "^0.0.13",
+    "jscs-jsdoc": "^0.0.16",
     "sinon": "^1.10.3",
     "sinon-chai": "^2.6.0"
   }
