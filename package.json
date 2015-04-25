@@ -1,6 +1,6 @@
 {
   "name": "package-updater",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Krister Kari <krister.kari@webtehdas.fi>",
   "description": "Find updates and update your npm packages",
   "files": [
